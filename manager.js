@@ -107,6 +107,7 @@ request.onload = function () {
             deleteButton.setAttribute("id", "deleteButton");
             deleteButton.innerText = "Delete character";
             deleteButton.addEventListener("click", async() => {
+              if (confirm("Are you sure?") == true) {
               try {
              let resp = await fetch("https://character-database.becode.xyz/characters/"+ character.id , {
             method: 'DELETE',
@@ -122,6 +123,7 @@ request.onload = function () {
             }catch (err) {
               alert (err);
             }
+          }
             });
 
             const backButton = document.createElement("button");
