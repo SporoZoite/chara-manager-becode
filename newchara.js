@@ -195,22 +195,8 @@ const deleteButton = document.createElement("button");
 deleteButton.setAttribute("id", "deleteButton");
 deleteButton.innerText = "Delete character";
 buttonSolo.appendChild(deleteButton);
-deleteButton.addEventListener("click", async() => {
-            try {
-            let resp = await fetch("https://character-database.becode.xyz/characters/"+ character.id , {
-            method: 'DELETE',
-            headers : {
-                'Content-Type':'application/json'}
-              });
-              if (!resp.ok) {
-                throw new Error ("ID not found");
-              }
-              else {
-                window.location.reload();
-              }
-            }catch (err) {
-              alert (err);
-            }
+deleteButton.addEventListener("click", () => {
+  window.location.href="index.html"
             });
 
 
