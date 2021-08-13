@@ -104,11 +104,13 @@ request.onload = function () {
             updateButton.innerText = "Update character";
             updateButton.addEventListener("click", function () {
               let idchara = character.id;
+              let namechara = character.name;
               let descriptionchara = character.description;
               let shortdeschara= character.shortDescription;
               let imgchara = character.image;
 
               sessionStorage.setItem("idchara", idchara);
+              sessionStorage.setItem("namechara", namechara);
               sessionStorage.setItem("descriptionchara", descriptionchara);
               sessionStorage.setItem("shortdeschara", shortdeschara);
               sessionStorage.setItem("imgchara", imgchara);

@@ -11,13 +11,19 @@ separator.appendChild(divider);
 
 
     let idchara = sessionStorage.getItem("idchara")
+    let namechara =sessionStorage.getItem("namechara")
     let descriptionchara = sessionStorage.getItem("descriptionchara")
     let shortdeschara = sessionStorage.getItem("shortdeschara")
     let imgchara = sessionStorage.getItem("imgchara")
     console.log(idchara);
+    console.log(namechara);
     console.log(descriptionchara);
     console.log(shortdeschara);
     console.log(imgchara);
+
+    document.getElementById("name").innerHTML = namechara
+    document.getElementById("shortDescription").innerHTML = shortdeschara
+    document.getElementById("description").innerHTML = descriptionchara
 
 
 var // where files are dropped + file selector is opened
