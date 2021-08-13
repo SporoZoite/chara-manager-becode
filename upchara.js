@@ -21,9 +21,9 @@ separator.appendChild(divider);
     console.log(shortdeschara);
     console.log(imgchara);
 
-    document.getElementById("name").innerHTML = namechara
-    document.getElementById("shortDescription").innerHTML = shortdeschara
-    document.getElementById("description").innerHTML = descriptionchara
+    document.getElementById("name").innerHTML = namechara;
+    document.getElementById("shortDescription").innerHTML = shortdeschara;
+    document.getElementById("description").innerHTML = descriptionchara;
 
 
 var // where files are dropped + file selector is opened
