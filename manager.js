@@ -102,6 +102,19 @@ request.onload = function () {
             const updateButton = document.createElement("button");
             updateButton.setAttribute("id", "updateButton");
             updateButton.innerText = "Update character";
+            updateButton.addEventListener("click", function () {
+              let idchara = character.id;
+              let descriptionchara = character.description;
+              let shortdeschara= character.shortDescription;
+              let imgchara = character.image;
+
+              sessionStorage.setItem("idchara", idchara);
+              sessionStorage.setItem("descriptionchara", descriptionchara);
+              sessionStorage.setItem("shortdeschara", shortdeschara);
+              sessionStorage.setItem("imgchara", imgchara);
+
+              window.location.href="updatechara.html";
+             })
 
             const deleteButton = document.createElement("button");
             deleteButton.setAttribute("id", "deleteButton");
