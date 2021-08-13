@@ -24,6 +24,7 @@ separator.appendChild(divider);
     document.getElementById("name").innerHTML = namechara;
     document.getElementById("shortDescription").innerHTML = shortdeschara;
     document.getElementById("description").innerHTML = descriptionchara;
+    
 
 
 var // where files are dropped + file selector is opened
@@ -139,21 +140,19 @@ function validateImage(image) {
 
 }
 
+// container
+var imgView = document.createElement("div");
+imgView.className = "image-view";
+imagePreviewRegion.appendChild(imgView);
+
+// previewing image
+var img = document.createElement("img");
+img.setAttribute("id","prevmage");
+img.className="rounded";
+imgView.appendChild(img);
+img.src = imgchara;
 
 function previewImage(image) {
-
-	// container
-	var imgView = document.createElement("div");
-	imgView.className = "image-view";
-	imagePreviewRegion.appendChild(imgView);
-
-	// previewing image
-	var img = document.createElement("img");
-    img.setAttribute("id","prevmage");
-    img.className="rounded";
-	imgView.appendChild(img);
-
-
 	// read the image...
 	var reader = new FileReader();
 	reader.onload = function(e) {
@@ -161,6 +160,7 @@ function previewImage(image) {
   };
 	reader.readAsDataURL(image);
 }
+
 
 
 
@@ -189,15 +189,15 @@ updateButton.addEventListener("click",async() =>{
       let image = prevMage.src;
       image = image.substr(22);
       console.log(image);
-      let id = null;
+      let id = idchara;
  
   
-      const postData = await fetch("https://character-database.becode.xyz/characters", {
-        method: "POST",
+      const postData = await fetch("https://character-database.becode.xyz/characters/"+id, {
+        method: "PUT",
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id, name, shortDescription, description, image }),
+        body: JSON.stringify({ name, shortDescription, description, image }),
       });
       console.log(postData);
       console.log(postData.json());

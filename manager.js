@@ -107,7 +107,7 @@ request.onload = function () {
               let namechara = character.name;
               let descriptionchara = character.description;
               let shortdeschara= character.shortDescription;
-              let imgchara = character.image;
+              let imgchara = `data:image/png;base64,${character.image}`;
 
               sessionStorage.setItem("idchara", idchara);
               sessionStorage.setItem("namechara", namechara);
