@@ -185,6 +185,7 @@ updateButton.addEventListener("click",async() =>{
       });
       console.log(postData);
       console.log(postData.json());
+      window.location.reload();
     });
   
   
