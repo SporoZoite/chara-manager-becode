@@ -25,6 +25,7 @@ dropRegion.addEventListener('click', function() {
 	fakeInput.click();
 });
 
+
 fakeInput.addEventListener("change", function() {
 	var files = fakeInput.files;
 	handleFiles(files);
@@ -122,6 +123,8 @@ function validateImage(image) {
 
 }
 
+let base64="";
+
 function previewImage(image) {
 
 	// container
@@ -140,10 +143,10 @@ function previewImage(image) {
 	var reader = new FileReader();
 	reader.onload = function(e) {
 		img.src = e.target.result;
-	}
+    base64 = e.target.result.replace("data:", "").replace(/^.+,/, "");;
+  };
 	reader.readAsDataURL(image);
 }
-
 
 
 
@@ -168,6 +171,7 @@ updateButton.addEventListener("click",async() =>{
       }
   
       let [name, shortDescription, description] = values;
+      console.log(values);
       let image = prevMage.src;
       console.log(image);
       let id = null;
@@ -176,7 +180,7 @@ updateButton.addEventListener("click",async() =>{
       const postData = await fetch("https://character-database.becode.xyz/characters", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ id, name, shortDescription, description, image }),
       });

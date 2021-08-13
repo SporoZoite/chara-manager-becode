@@ -49,7 +49,8 @@ request.onload = function () {
 
       const image = document.createElement("img");
       image.setAttribute("class", "rounded");
-      image.src = character.image;
+      image.src = `data:image/png;base64,${character.image}`;
+  
 
       const h1 = document.createElement("h2");
       h1.textContent = character.name;
@@ -69,9 +70,10 @@ request.onload = function () {
           "https://character-database.becode.xyz/characters?" +
             new URLSearchParams(params)
         );
-        const hero = await res.json();
+        await res.json();
+
         if (request.status >= 200 && request.status < 400) {
-          hero.forEach((character) => {
+          
             const cardSolo = document.createElement("div");
             cardSolo.setAttribute("id", "cardSolo");
 
@@ -79,6 +81,8 @@ request.onload = function () {
             image.setAttribute("class", "rounded");
             image.setAttribute("id", "bigImg");
             image.src = character.image;
+            image.src = `data:image/png;base64,${character.image}`;
+
 
             const titreSolo = document.createElement("div");
             titreSolo.setAttribute("class", "titreSolo");
@@ -138,7 +142,7 @@ request.onload = function () {
             buttonSolo.appendChild(updateButton);
             buttonSolo.appendChild(deleteButton);
             cardSolo.appendChild(backButton);
-          });
+          
         }
       });
       charaButton.innerText = "See character";
