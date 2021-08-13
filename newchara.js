@@ -123,7 +123,6 @@ function validateImage(image) {
 
 }
 
-let base64="";
 
 function previewImage(image) {
 
@@ -143,7 +142,6 @@ function previewImage(image) {
 	var reader = new FileReader();
 	reader.onload = function(e) {
 		img.src = e.target.result;
-    base64 = e.target.result.replace("data:", "").replace(/^.+,/, "");;
   };
 	reader.readAsDataURL(image);
 }
@@ -173,6 +171,7 @@ updateButton.addEventListener("click",async() =>{
       let [name, shortDescription, description] = values;
       console.log(values);
       let image = prevMage.src;
+      image = image.substr(22);
       console.log(image);
       let id = null;
  
