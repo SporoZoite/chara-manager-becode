@@ -7,8 +7,8 @@ const searchbox = document.createElement("input");
 searchbox.setAttribute("type", "text");
 searchbox.setAttribute("id", "search");
 searchbox.setAttribute("placeholder", "Search character");
-searchbox.setAttribute("onkeyup", "search_chara");
 searchbox.setAttribute("name", "search");
+
 
 const separator = document.getElementById("separator");
 const divider = document.createElement("hr");
@@ -18,6 +18,7 @@ const app = document.getElementById("root");
 
 const container = document.createElement("div");
 container.setAttribute("class", "container");
+container.setAttribute("id", "container");
 
 const bottom = document.getElementById("bottom");
 const newButton = document.createElement("button");
@@ -46,6 +47,7 @@ request.onload = function () {
     data.forEach((character) => {
       const card = document.createElement("div");
       card.setAttribute("class", "card");
+      card.setAttribute("id","card");
 
       const image = document.createElement("img");
       image.setAttribute("class", "rounded");
@@ -53,6 +55,7 @@ request.onload = function () {
   
 
       const h1 = document.createElement("h2");
+      h1.setAttribute("class","cardtitre")
       h1.textContent = character.name;
 
       const p = document.createElement("p");
@@ -61,6 +64,26 @@ request.onload = function () {
       const params = {
         id: character.id,
       };
+
+      searchbox.addEventListener("keyup", () =>{
+        let input,filter,cards,cardContainer,title,i;
+        input= document.getElementById("search");
+       filter =input.value.toUpperCase();
+       cardContainer = document.getElementById("container");
+       cards = cardContainer.getElementsByClassName("card");
+      
+        for (i=0;i<cards.length;i++){
+          title = cards[i].querySelector(".cardtitre");
+          if (title.innerText.toUpperCase().indexOf(filter)>-1){
+            cards[i].style.display = "";
+          }
+          else {
+            cards [i].style.display ="none";
+          }
+          }
+        });
+      
+      
 
       const charaButton = document.createElement("button");
       charaButton.setAttribute("id", "charaButton");
