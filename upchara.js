@@ -10,6 +10,16 @@ divider.setAttribute("class", "solid");
 separator.appendChild(divider);
 
 
+    let idchara = sessionStorage.getItem("idchara")
+    let descriptionchara = sessionStorage.getItem("descriptionchara")
+    let shortdeschara = sessionStorage.getItem("shortdeschara")
+    let imgchara = sessionStorage.getItem("imgchara")
+    console.log(idchara);
+    console.log(descriptionchara);
+    console.log(shortdeschara);
+    console.log(imgchara);
+
+
 var // where files are dropped + file selector is opened
 	dropRegion = document.getElementById("drop-region"),
 	// where images are previewed
