@@ -56,7 +56,7 @@ request.onload = function () {
       h1.textContent = character.name;
 
       const p = document.createElement("p");
-      p.textContent = `${character.shortDescription.substring(0, 250)}...`;
+      p.textContent = `${character.shortDescription}...`;  //.substring(0, 250)//
 
       const params = {
         id: character.id,
