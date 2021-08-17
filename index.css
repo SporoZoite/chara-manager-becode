@@ -69,6 +69,7 @@ hr.solid {
   }
 
   .container {
+    margin:auto;
     display: flex;
     flex-wrap: wrap;
   }
@@ -78,7 +79,7 @@ hr.solid {
     margin: 2.6rem;
     background: #363333;
     box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
+    border-radius: 30px;
     overflow: hidden;
     transition: all 0.2s linear;
     flex: 0 1 calc(20%);
@@ -86,8 +87,8 @@ hr.solid {
 
   
   .card:hover {
-    box-shadow: 2px 8px 45px rgba(0, 0, 0, 0.15);
-    transform: translate3D(0, -2px, 0);
+    box-shadow: 8px 18px 45px rgba(0, 0, 0, 0.5);
+    transform: translate3D(0, -5px, 0);
   }
   
   
@@ -112,15 +113,15 @@ h2 {
     padding: 1rem 1rem;
     margin: 0.5rem;
     font-size: 1.5rem;
-    height: 100px;
+    height: 70px;
     font-family: "Permanent Marker", cursive;
     color: white;
   }
 
 p {
-  padding: 0 1rem 2rem;
+  padding: 0 1rem 1rem;
   margin: 0.5rem;
-  height: 150px;
+  height: 120px;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
 }
@@ -137,7 +138,10 @@ p {
     border-radius: 15px;
     border-color: white;
   }
- 
+  #charaButton:hover {
+    box-shadow: 8px 18px 45px rgba(0, 0, 0, 0.5);
+    transform: translate3D(0, -3px, 0);
+  }
 
 
   /*big card*/
@@ -145,7 +149,7 @@ p {
   #cardSolo{
     width: 95%;
     height: auto;
-    position: absolute;
+    position:absolute;
     margin:auto;
     background: #363333;
     box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
@@ -200,7 +204,7 @@ p {
     align-items: center;
     margin: 3rem;
   }
-
+ 
   #updateButton {
   padding: 1rem 2rem;
   margin: 1.5rem;
@@ -211,6 +215,11 @@ p {
   background-color: #4b7cfb;
   border-radius: 15px;
   }
+  #updateButton:hover {
+    box-shadow: 8px 18px 45px rgba(0, 0, 0, 0.5);
+    transform: translate3D(0, -5px, 0);
+  }
+
 
   #deleteButton {
     padding: 1rem 2rem;
@@ -222,6 +231,10 @@ p {
   border-color: red;
   background-color: #363333;
   border-radius: 15px;
+  }
+  #deleteButton:hover {
+    box-shadow: 8px 18px 45px rgba(0, 0, 0, 0.5);
+    transform: translate3D(0, -5px, 0);
   }
 
   #backButton {
@@ -236,7 +249,10 @@ p {
     border-color: white;
     margin-left: 5rem;
   }
-
+  #backButton:hover {
+    box-shadow: 8px 18px 45px rgba(0, 0, 0, 0.5);
+    transform: translate3D(0, -5px, 0);
+  }
 
 /*bottom*/
 
@@ -259,6 +275,11 @@ p {
   color: white;
   background-color: #4b7cfb;
   border-radius: 15px;
+}
+
+#newButton:hover {
+  box-shadow: 8px 18px 45px rgba(0, 0, 0, 0.5);
+  transform: translate3D(0, -5px, 0);
 }
 
 /*newchara*/
