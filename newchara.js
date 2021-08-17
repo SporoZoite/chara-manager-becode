@@ -206,10 +206,14 @@ backButton.innerText = "<Back";
 backButton.addEventListener("click", function () {
             window.location.href="index.html"
             })
-cardSolo.appendChild(backButton);          
+cardSolo.appendChild(backButton);      
 
-
-
+document
+  .querySelectorAll('[data-tiny-editor]')
+  .forEach(editor =>
+    editor.addEventListener('input', e => console.log(e.target.innerHTML)
+  )
+);
 
 
 

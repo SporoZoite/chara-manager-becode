@@ -144,8 +144,8 @@ p {
 
   #cardSolo{
     width: 95%;
-    height: fit-content;
-    position: fixed;
+    height: auto;
+    position: absolute;
     margin:auto;
     background: #363333;
     box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.1);
