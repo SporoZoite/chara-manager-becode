@@ -95,7 +95,6 @@ request.onload = function () {
         await res.json();
 
         if (request.status >= 200 && request.status < 400) {
-          
             const cardSolo = document.createElement("div");
             cardSolo.setAttribute("id", "cardSolo");
 
