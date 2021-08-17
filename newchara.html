@@ -15,8 +15,8 @@
       rel="stylesheet"
     />
     <link href="index.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <script src="https://unpkg.com/tiny-editor/dist/bundle.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
   </head>
 
   <body>
@@ -35,15 +35,16 @@
 
             <textarea rows = "2" cols = "60" name="shortDescription" id="shortDescription">SHORT DESCRIPTION
             </textarea>
-
-            <textarea rows = "10" cols = "60" name="description" id="description" >We are Groot. We are Groot. I am Groot. 
- </textarea>
+            <div data-tiny-editor data-formatblock="no" data-fontname="no" data-remove-format="no" data-indent="no" data-outdent="no" id="editor" >
+           We are Groot. We are Groot. I am Groot. 
+</div>
 
         </div>
       </div>
     </div>
 
     <div id="bottom"></div>
+    <script src="https://unpkg.com/tiny-editor/dist/bundle.js"></script>
     <script src="newchara.js"></script>
 
   

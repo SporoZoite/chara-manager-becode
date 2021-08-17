@@ -23,7 +23,7 @@ separator.appendChild(divider);
 
     document.getElementById("name").innerHTML = namechara;
     document.getElementById("shortDescription").innerHTML = shortdeschara;
-    document.getElementById("description").innerHTML = descriptionchara;
+    document.getElementById("editor").innerHTML = descriptionchara;
     
 
 
@@ -184,12 +184,14 @@ updateButton.addEventListener("click",async() =>{
         return;
       }
   
-      let [name, shortDescription, description] = values;
+      let [name, shortDescription] = values;
       console.log(values);
       let image = prevMage.src;
       image = image.substr(22);
       console.log(image);
       let id = idchara;
+      let description = document.getElementById("editor").innerHTML;
+      console.log (description);
  
   
       const postData = await fetch("https://character-database.becode.xyz/characters/"+id, {
@@ -223,6 +225,14 @@ backButton.addEventListener("click", function () {
             window.location.href="index.html"
             })
 cardSolo.appendChild(backButton);          
+
+
+document
+  .querySelectorAll('[data-tiny-editor]')
+  .forEach(editor =>
+    editor.addEventListener('input', e => console.log(e.target.innerHTML)
+  )
+);
 
 
 

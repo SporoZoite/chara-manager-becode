@@ -117,7 +117,7 @@ request.onload = function () {
 
             const p = document.createElement("p");
             p.setAttribute("id", "bigP");
-            p.textContent = `${character.description}`;
+            p.innerHTML = `${character.description}`;
 
             const buttonSolo = document.createElement("div");
             buttonSolo.setAttribute("class", "buttonSolo");

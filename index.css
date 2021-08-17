@@ -5,6 +5,7 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Roboto", sans-serif;
   line-height: 1.6;
   color: white;
   background: rgb(75, 78, 162);
@@ -124,7 +125,7 @@ h2 {
     font-family: "Permanent Marker", cursive;
     color: white;
   }
-  @media only screen and (max-width: 1600px) {
+  @media only screen and (max-width: 1800px) {
     h2 {
       font-size:1rem;
       height:60px;
@@ -139,7 +140,7 @@ p {
   font-size: 1rem;
 }
 
-@media only screen and (max-width: 1600px) {
+@media only screen and (max-width: 1800px) {
   p {
     height:70px;
     font-size: 0.5rem;
@@ -326,7 +327,7 @@ p {
   padding: 1rem 2rem 1rem 2rem;
   text-align:left;
   width:95%;
-  font-family: "Permanent Marker", cursive;
+  font-family: "Roboto", sans-serif;
   color: white;
   font-size: 1rem;
   border-radius: 20px;
@@ -334,13 +335,28 @@ p {
   border-color: honeydew;
 }
 
-#description{
+#editor{
   display: flex;
-  margin: 2rem auto;
+  margin: 0rem auto;
   padding: 1rem 2rem;
   text-align:left;
   width:95%;
-  font-family: "Permanent Marker", cursive;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  background-color: grey;
+  border-color: honeydew;
+
+}
+
+.__toolbar{
+  display: flex;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  text-align:left;
+  width:95%;
+  font-family: "Roboto", sans-serif;
   color: white;
   font-size: 1.5rem;
   border-radius: 20px;

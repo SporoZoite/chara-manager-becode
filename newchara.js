@@ -168,10 +168,12 @@ updateButton.addEventListener("click",async() =>{
         return;
       }
   
-      let [name, shortDescription, description] = values;
+      let [name, shortDescription] = values;
       console.log(values);
       let image = prevMage.src;
       image = image.substr(22);
+      let description = document.getElementById("editor").innerHTML;
+      console.log (description);
       console.log(image);
       let id = null;
  
