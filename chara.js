@@ -1,3 +1,6 @@
+import {deleteChara} from './delete.js';
+import {back} from './back.js';
+import {updateChara} from './update.js';
 
 const container = document.getElementById("container");
 let idChara = sessionStorage.getItem("idChara")
@@ -12,37 +15,6 @@ console.log(shortDesChara);
 console.log(imgChara);
 
 
-async function back() {
-    window.location.href="index.html"
-  }
-
-
-function updateChara() {
-    window.location.href = "updatechara.html";
-  }
-  
-  async function deleteChara() {
-    if (confirm("Are you sure?") == true) {
-      try {
-        let resp = await fetch(
-          "https://character-database.becode.xyz/characters/" + idChara,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        if (!resp.ok) {
-          throw new Error("ID not found");
-        } else {
-            window.location.href ="index.html"
-        }
-      } catch (err) {
-        alert(err);
-      }
-    }
-  }
 
   const cardSolo = document.createElement("div");
   cardSolo.setAttribute("id", "cardSolo");
