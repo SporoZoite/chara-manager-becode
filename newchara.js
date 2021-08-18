@@ -1,15 +1,3 @@
-const up = document.getElementById("header");
-
-const titre = document.createElement("h1");
-titre.innerHTML = "CHARACTERS MANAGER";
-up.appendChild(titre);
-
-const separator = document.getElementById("separator");
-const divider = document.createElement("hr");
-divider.setAttribute("class", "solid");
-separator.appendChild(divider);
-
-
 var // where files are dropped + file selector is opened
 	dropRegion = document.getElementById("drop-region"),
 	// where images are previewed

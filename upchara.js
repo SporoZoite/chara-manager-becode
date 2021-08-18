@@ -1,15 +1,3 @@
-const up = document.getElementById("header");
-
-const titre = document.createElement("h1");
-titre.innerHTML = "CHARACTERS MANAGER";
-up.appendChild(titre);
-
-const separator = document.getElementById("separator");
-const divider = document.createElement("hr");
-divider.setAttribute("class", "solid");
-separator.appendChild(divider);
-
-
     let idChara = sessionStorage.getItem("idChara")
     let nameChara =sessionStorage.getItem("nameChara")
     let descriptionChara = sessionStorage.getItem("descriptionChara")
