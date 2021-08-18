@@ -10,20 +10,20 @@ divider.setAttribute("class", "solid");
 separator.appendChild(divider);
 
 
-    let idchara = sessionStorage.getItem("idchara")
-    let namechara =sessionStorage.getItem("namechara")
-    let descriptionchara = sessionStorage.getItem("descriptionchara")
-    let shortdeschara = sessionStorage.getItem("shortdeschara")
-    let imgchara = sessionStorage.getItem("imgchara")
-    console.log(idchara);
-    console.log(namechara);
-    console.log(descriptionchara);
-    console.log(shortdeschara);
-    console.log(imgchara);
+    let idChara = sessionStorage.getItem("idChara")
+    let nameChara =sessionStorage.getItem("nameChara")
+    let descriptionChara = sessionStorage.getItem("descriptionChara")
+    let shortDesChara = sessionStorage.getItem("shortDesChara")
+    let imgChara = sessionStorage.getItem("imgChara")
+    console.log(idChara);
+    console.log(nameChara);
+    console.log(descriptionChara);
+    console.log(shortDesChara);
+    console.log(imgChara);
 
-    document.getElementById("name").innerHTML = namechara;
-    document.getElementById("shortDescription").innerHTML = shortdeschara;
-    document.getElementById("editor").innerHTML = descriptionchara;
+    document.getElementById("name").innerHTML = nameChara;
+    document.getElementById("shortDescription").innerHTML = shortDesChara;
+    document.getElementById("editor").innerHTML = descriptionChara;
     
 
 
@@ -150,7 +150,7 @@ var img = document.createElement("img");
 img.setAttribute("id","prevmage");
 img.className="rounded";
 imgView.appendChild(img);
-img.src = imgchara;
+img.src = imgChara;
 
 function previewImage(image) {
 	// read the image...
@@ -189,7 +189,7 @@ updateButton.addEventListener("click",async() =>{
       let image = prevMage.src;
       image = image.substr(22);
       console.log(image);
-      let id = idchara;
+      let id = idChara;
       let description = document.getElementById("editor").innerHTML;
       console.log (description);
  
@@ -214,15 +214,15 @@ deleteButton.setAttribute("id", "deleteButton");
 deleteButton.innerText = "Delete character";
 buttonSolo.appendChild(deleteButton);
 deleteButton.addEventListener("click", () => {
-  window.location.href="index.html"
+ back();
             });
 
 
 const backButton = document.createElement("button");
 backButton.setAttribute("id", "backButton");
 backButton.innerText = "<Back";
-backButton.addEventListener("click", function () {
-            window.location.href="index.html"
+backButton.addEventListener("click", () => {
+ back();
             })
 cardSolo.appendChild(backButton);          
 
@@ -234,6 +234,9 @@ document
   )
 );
 
+async function back() {
+    window.location.href="index.html"
+  }
 
 
 
