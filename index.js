@@ -1,12 +1,15 @@
 import {searchBar} from './searchbar.js';
-import {newChara} from './new.js';
+import {newChara} from './newchara.js';
+import { chara } from './chara.js';
 
 const searchbox = document.getElementById("search");
 
-const container = document.getElementById("container");
+let container = document.getElementById("container");
 
 const newButton = document.getElementById("newButton");
 newButton.addEventListener("click", () =>{
+  container.remove();
+  newButton.remove();
   newChara();
 });
 
@@ -58,8 +61,8 @@ request.onload = function () {
         sessionStorage.setItem("descriptionChara", descriptionChara);
         sessionStorage.setItem("shortDesChara", shortDesChara);
         sessionStorage.setItem("imgChara", imgChara);
-         
-        window.location.href = "chara.html";
+        container.remove();
+         chara();
       });
     });
   } else {

@@ -1,24 +1,22 @@
 import {deleteChara} from './delete.js';
 import {back} from './back.js';
-import {updateChara} from './update.js';
+import {updateChara} from './upchara.js';
+export async function chara() {
 
-const container = document.getElementById("container");
 let idChara = sessionStorage.getItem("idChara")
 let nameChara =sessionStorage.getItem("nameChara")
 let descriptionChara = sessionStorage.getItem("descriptionChara")
 let shortDesChara = sessionStorage.getItem("shortDesChara")
 let imgChara = sessionStorage.getItem("imgChara")
-console.log(idChara);
-console.log(nameChara);
-console.log(descriptionChara);
-console.log(shortDesChara);
-console.log(imgChara);
 
 
-
-  const cardSolo = document.createElement("div");
+  const root = document.getElementById("root");
+  let containerBis = document.createElement("div");
+  containerBis.setAttribute("id","container");
+  root.appendChild(containerBis);
+  let cardSolo = document.createElement("div");
   cardSolo.setAttribute("id", "cardSolo");
-  container.appendChild(cardSolo);
+  containerBis.appendChild(cardSolo);
 
   const image = document.createElement("img");
   image.setAttribute("class", "rounded");
@@ -51,6 +49,8 @@ console.log(imgChara);
   updateButton.setAttribute("id", "updateButton");
   updateButton.innerText = "Update character";
   updateButton.addEventListener("click", ()=>{
+    container.remove();
+    newButton.remove();
     updateChara();
   });
   buttonSolo.appendChild(updateButton);
@@ -70,3 +70,4 @@ console.log(imgChara);
     back();
   });
   cardSolo.appendChild(backButton);
+}

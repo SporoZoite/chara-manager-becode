@@ -2,21 +2,20 @@ import {back} from './back.js';
 import {deleteChara} from './delete.js';
 import {dragDropFull} from './dragdropfull.js';
 import {editor} from './put.js';
+import {newCard} from './newcard.js';
 
+export async function updateChara(){
 let idChara = sessionStorage.getItem("idChara");
 let nameChara = sessionStorage.getItem("nameChara");
 let descriptionChara = sessionStorage.getItem("descriptionChara");
 let shortDesChara = sessionStorage.getItem("shortDesChara");
 
-console.log(idChara);
-console.log(nameChara);
-console.log(descriptionChara);
-console.log(shortDesChara);
-
+newCard();
 
 document.getElementById("name").innerHTML = nameChara;
 document.getElementById("shortDescription").innerHTML = shortDesChara;
 document.getElementById("editor").innerHTML = descriptionChara;
+
 
 dragDropFull();
 
@@ -51,4 +50,4 @@ backButton.addEventListener("click", () => {
 });
 cardSolo.appendChild(backButton);
 
-
+}

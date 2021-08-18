@@ -1,10 +1,13 @@
 import {back} from './back.js';
 import {dragDropEmpt} from './dragdropempty.js';
 import {add} from './post.js';
+import {newCard} from './newcard.js';
 
+
+export async function newChara(){
+newCard();
 dragDropEmpt();
 
-const cardSolo =document.getElementById("cardSolo")
 const buttonSolo = document.createElement("div");
 buttonSolo.setAttribute("class", "buttonSolo");
 cardSolo.appendChild(buttonSolo);
@@ -34,5 +37,5 @@ backButton.addEventListener("click", function () {
 });
 cardSolo.appendChild(backButton);
 
-
+}
 
