@@ -1,0 +1,43 @@
+{
+  "name": "chara-manager-becode",
+  "version": "1.0.0",
+  "description": "## This project was realized by: Lisa van Hooydonk: https://github.com/SporoZoite Eva Mélinand: https://github.com/Evamel",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "npm": "^7.20.6",
+    "prettier": "^2.3.2",
+    "regenerator-runtime": "^0.13.9",
+    "tiny-editor": "^0.2.5"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "pretest": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-react": "^7.24.0",
+    "parcel-bundler": "^1.12.5",
+    "preppy": "^10.10.2"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SporoZoite/chara-manager-becode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SporoZoite/chara-manager-becode/issues"
+  },
+  "homepage": "https://github.com/SporoZoite/chara-manager-becode#readme"
+}

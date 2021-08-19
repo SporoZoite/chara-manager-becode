@@ -1,48 +1,57 @@
-import { backButton, buttonSolo, eraseButton, updatedButton } from "./buttons";
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-undef */
+/* eslint-disable import/extensions */
+import { eraseButton, updatedButton } from './buttons.js';
 
-export async function chara() {
-  let idChara = sessionStorage.getItem("idChara");
-  let nameChara = sessionStorage.getItem("nameChara");
-  let descriptionChara = sessionStorage.getItem("descriptionChara");
-  let shortDesChara = sessionStorage.getItem("shortDesChara");
-  let imgChara = sessionStorage.getItem("imgChara");
+export function chara() {
+  const nameChara = sessionStorage.getItem('nameChara');
+  const descriptionChara = sessionStorage.getItem('descriptionChara');
+  const shortDesChara = sessionStorage.getItem('shortDesChara');
+  const imgChara = sessionStorage.getItem('imgChara');
 
-  const root = document.getElementById("root");
-  let containerBis = document.createElement("div");
-  containerBis.setAttribute("id", "container");
-  root.appendChild(containerBis);
-  let cardSolo = document.createElement("div");
-  cardSolo.setAttribute("id", "cardSolo");
-  containerBis.appendChild(cardSolo);
+  container.style.display = 'none';
+  containerB.style.display = 'block';
+  cardSolo.style.display = 'none';
+  newButton.remove();
 
-  const image = document.createElement("img");
-  image.setAttribute("class", "rounded");
-  image.setAttribute("id", "bigImg");
+  const cardChara = document.getElementById('cardChara');
+  const image = document.createElement('img');
+  image.setAttribute('class', 'rounded');
+  image.setAttribute('id', 'bigImg');
   image.src = imgChara;
-  cardSolo.appendChild(image);
+  cardChara.appendChild(image);
 
-  const titreSolo = document.createElement("div");
-  titreSolo.setAttribute("class", "titreSolo");
-  const h3 = document.createElement("h3");
+  const titreSolo = document.createElement('div');
+  titreSolo.setAttribute('class', 'titreSolo');
+  const h3 = document.createElement('h3');
   h3.textContent = nameChara;
-  cardSolo.appendChild(titreSolo);
+  cardChara.appendChild(titreSolo);
   titreSolo.appendChild(h3);
 
-  const minp = document.createElement("p");
-  minp.setAttribute("id", "minP");
+  const minp = document.createElement('p');
+  minp.setAttribute('id', 'minP');
   minp.textContent = `${shortDesChara}`;
   titreSolo.appendChild(minp);
 
-  const p = document.createElement("p");
-  p.setAttribute("id", "bigP");
+  const p = document.createElement('p');
+  p.setAttribute('id', 'bigP');
   p.innerHTML = `${descriptionChara}`;
-  cardSolo.appendChild(p);
+  cardChara.appendChild(p);
 
-  buttonSolo();
+  const buttonSolo = document.createElement('div');
+  buttonSolo.setAttribute('class', 'buttonSolo');
+  buttonSolo.setAttribute('id', 'buttonSolo');
+  cardChara.appendChild(buttonSolo);
 
   updatedButton();
 
   eraseButton();
 
-  backButton();
+  const indexButton = document.createElement('button');
+  indexButton.setAttribute('id', 'backButton');
+  indexButton.innerText = '<Back';
+  indexButton.addEventListener('click', () => {
+    window.location.href = 'index.html';
+  });
+  cardChara.appendChild(indexButton);
 }
