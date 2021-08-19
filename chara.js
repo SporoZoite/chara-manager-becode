@@ -1,18 +1,15 @@
-import {deleteChara} from './delete.js';
-import {back} from './back.js';
-import {updateChara} from './upchara.js';
+import { backButton, buttonSolo, eraseButton, updatedButton } from "./buttons";
+
 export async function chara() {
-
-let idChara = sessionStorage.getItem("idChara")
-let nameChara =sessionStorage.getItem("nameChara")
-let descriptionChara = sessionStorage.getItem("descriptionChara")
-let shortDesChara = sessionStorage.getItem("shortDesChara")
-let imgChara = sessionStorage.getItem("imgChara")
-
+  let idChara = sessionStorage.getItem("idChara");
+  let nameChara = sessionStorage.getItem("nameChara");
+  let descriptionChara = sessionStorage.getItem("descriptionChara");
+  let shortDesChara = sessionStorage.getItem("shortDesChara");
+  let imgChara = sessionStorage.getItem("imgChara");
 
   const root = document.getElementById("root");
   let containerBis = document.createElement("div");
-  containerBis.setAttribute("id","container");
+  containerBis.setAttribute("id", "container");
   root.appendChild(containerBis);
   let cardSolo = document.createElement("div");
   cardSolo.setAttribute("id", "cardSolo");
@@ -41,33 +38,11 @@ let imgChara = sessionStorage.getItem("imgChara")
   p.innerHTML = `${descriptionChara}`;
   cardSolo.appendChild(p);
 
-  const buttonSolo = document.createElement("div");
-  buttonSolo.setAttribute("class", "buttonSolo");
-  cardSolo.appendChild(buttonSolo);
+  buttonSolo();
 
-  const updateButton = document.createElement("button");
-  updateButton.setAttribute("id", "updateButton");
-  updateButton.innerText = "Update character";
-  updateButton.addEventListener("click", ()=>{
-    container.remove();
-    newButton.remove();
-    updateChara();
-  });
-  buttonSolo.appendChild(updateButton);
+  updatedButton();
 
-  const deleteButton = document.createElement("button");
-  deleteButton.setAttribute("id", "deleteButton");
-  deleteButton.innerText = "Delete character";
-  deleteButton.addEventListener("click",()=>{
-    deleteChara();
-  });
-  buttonSolo.appendChild(deleteButton);
+  eraseButton();
 
-  const backButton = document.createElement("button");
-  backButton.setAttribute("id", "backButton");
-  backButton.innerText = "<Back";
-  backButton.addEventListener("click", ()=>{
-    back();
-  });
-  cardSolo.appendChild(backButton);
+  backButton();
 }
