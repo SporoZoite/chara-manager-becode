@@ -5,10 +5,9 @@ import { newChara } from './newchara.js';
 import { chara } from './chara.js';
 import 'regenerator-runtime/runtime';
 
-const searchbox = document.getElementById('search');
-
 const containerB = document.getElementById('containerB');
 containerB.style.display = 'none';
+const searchbox = document.getElementById('search');
 const container = document.getElementById('container');
 
 const newButton = document.getElementById('newButton');
