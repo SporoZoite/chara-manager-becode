@@ -137,18 +137,18 @@ function searchBar() {
   let cardContainer;
   let title;
   let i;
-  input = document.getElementById('search');
+  input = document.getElementById("search");
   filter = input.value.toUpperCase();
-  cardContainer = document.getElementById('container');
-  cards = cardContainer.getElementsByClassName('card');
+  cardContainer = document.getElementById("container");
+  cards = cardContainer.getElementsByClassName("card");
 
   for (i = 0; i < cards.length; i++) {
-    title = cards[i].querySelector('.cardtitre');
+    title = cards[i].querySelector(".cardtitre");
 
     if (title.innerText.toUpperCase().indexOf(filter) > -1) {
-      cards[i].style.display = '';
+      cards[i].style.display = "";
     } else {
-      cards[i].style.display = 'none';
+      cards[i].style.display = "none";
     }
   }
 }
@@ -171,18 +171,18 @@ exports.dragDropEmpt = dragDropEmpt;
 /* eslint-disable import/prefer-default-export */
 function dragDropEmpt() {
   const // where files are dropped + file selector is opened
-  dropRegion = document.getElementById('drop-region'); // where images are previewed
+  dropRegion = document.getElementById("drop-region"); // where images are previewed
 
-  const imagePreviewRegion = document.getElementById('image-preview'); // open file selector when clicked on the drop region
+  const imagePreviewRegion = document.getElementById("image-preview"); // open file selector when clicked on the drop region
 
-  const fakeInput = document.createElement('input');
-  fakeInput.type = 'file';
-  fakeInput.accept = 'image/*';
+  const fakeInput = document.createElement("input");
+  fakeInput.type = "file";
+  fakeInput.accept = "image/*";
   fakeInput.multiple = true;
-  dropRegion.addEventListener('click', () => {
+  dropRegion.addEventListener("click", () => {
     fakeInput.click();
   });
-  fakeInput.addEventListener('change', () => {
+  fakeInput.addEventListener("change", () => {
     const {
       files
     } = fakeInput;
@@ -194,10 +194,10 @@ function dragDropEmpt() {
     e.stopPropagation();
   }
 
-  dropRegion.addEventListener('dragenter', preventDefault, false);
-  dropRegion.addEventListener('dragleave', preventDefault, false);
-  dropRegion.addEventListener('dragover', preventDefault, false);
-  dropRegion.addEventListener('drop', preventDefault, false);
+  dropRegion.addEventListener("dragenter", preventDefault, false);
+  dropRegion.addEventListener("dragleave", preventDefault, false);
+  dropRegion.addEventListener("dragover", preventDefault, false);
+  dropRegion.addEventListener("drop", preventDefault, false);
 
   function handleDrop(e) {
     const dt = e.dataTransfer;
@@ -209,7 +209,7 @@ function dragDropEmpt() {
       handleFiles(files);
     } else {
       // check for img
-      const html = dt.getData('text/html');
+      const html = dt.getData("text/html");
       const match = html && /\bsrc="?([^"\s]+)"?\s*/.exec(html);
       const url = match && match[1];
 
@@ -220,8 +220,8 @@ function dragDropEmpt() {
 
     function uploadImageFromURL(url) {
       const img = new Image();
-      const c = document.createElement('canvas');
-      const ctx = c.getContext('2d');
+      const c = document.createElement("canvas");
+      const ctx = c.getContext("2d");
 
       img.onload = function () {
         c.width = this.naturalWidth; // update canvas size to match image
@@ -233,20 +233,20 @@ function dragDropEmpt() {
           // get content as PNG blob
           // call our main function
           handleFiles([blob]);
-        }, 'image/png');
+        }, "image/png");
       };
 
       img.onerror = function () {
-        alert('Error in uploading');
+        alert("Error in uploading");
       };
 
-      img.crossOrigin = ''; // if from different origin
+      img.crossOrigin = ""; // if from different origin
 
       img.src = url;
     }
   }
 
-  dropRegion.addEventListener('drop', handleDrop, false);
+  dropRegion.addEventListener("drop", handleDrop, false);
 
   function handleFiles(files) {
     for (let i = 0, len = files.length; i < len; i++) {
@@ -256,10 +256,10 @@ function dragDropEmpt() {
 
   function validateImage(image) {
     // check the type
-    const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    const validTypes = ["image/jpeg", "image/png", "image/gif"];
 
     if (validTypes.indexOf(image.type) === -1) {
-      alert('Invalid File Type');
+      alert("Invalid File Type");
       return false;
     } // check the size
 
@@ -267,7 +267,7 @@ function dragDropEmpt() {
     const maxSizeInBytes = 10e6; // 10MB
 
     if (image.size > maxSizeInBytes) {
-      alert('File too large');
+      alert("File too large");
       return false;
     }
 
@@ -275,13 +275,13 @@ function dragDropEmpt() {
   } // container
 
 
-  const imgView = document.createElement('div');
-  imgView.className = 'image-view';
+  const imgView = document.createElement("div");
+  imgView.className = "image-view";
   imagePreviewRegion.appendChild(imgView); // previewing image
 
-  const img = document.createElement('img');
-  img.setAttribute('id', 'prevmage');
-  img.className = 'rounded';
+  const img = document.createElement("img");
+  img.setAttribute("id", "prevmage");
+  img.className = "rounded";
   imgView.appendChild(img);
 
   function previewImage(image) {
@@ -309,14 +309,14 @@ exports.add = add;
 
 /* eslint-disable import/prefer-default-export */
 async function add() {
-  const prevMage = document.getElementById('prevmage');
-  const text = Array.from(document.querySelectorAll('textarea'));
+  const prevMage = document.getElementById("prevmage");
+  const text = Array.from(document.querySelectorAll("textarea"));
   const values = text.map(({
     value
   }) => value.trim());
 
-  if (values.some(value => value === '')) {
-    alert('Please fill in all fields');
+  if (values.some(value => value === "")) {
+    alert("Please fill in all fields");
     return;
   }
 
@@ -324,11 +324,11 @@ async function add() {
   let image = prevMage.src;
   image = image.substr(22);
   const id = null;
-  const description = document.getElementById('editor').innerHTML;
-  const postData = await fetch('https://character-database.becode.xyz/characters/', {
-    method: 'POST',
+  const description = document.getElementById("editor").innerHTML;
+  const postData = await fetch("https://character-database.becode.xyz/characters/", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       id,
@@ -340,7 +340,7 @@ async function add() {
   });
   console.log(postData);
   console.log(postData.json());
-  window.location.href = 'index.html';
+  window.location.href = "index.html";
 }
 },{}],"dragdropfull.js":[function(require,module,exports) {
 "use strict";
@@ -360,20 +360,20 @@ exports.dragDropFull = dragDropFull;
 
 /* eslint-disable import/prefer-default-export */
 function dragDropFull() {
-  const imgChara = sessionStorage.getItem('imgChara');
+  const imgChara = sessionStorage.getItem("imgChara");
   const // where files are dropped + file selector is opened
-  dropRegion = document.getElementById('drop-region'); // where images are previewed
+  dropRegion = document.getElementById("drop-region"); // where images are previewed
 
-  const imagePreviewRegion = document.getElementById('image-preview'); // open file selector when clicked on the drop region
+  const imagePreviewRegion = document.getElementById("image-preview"); // open file selector when clicked on the drop region
 
-  const fakeInput = document.createElement('input');
-  fakeInput.type = 'file';
-  fakeInput.accept = 'image/*';
+  const fakeInput = document.createElement("input");
+  fakeInput.type = "file";
+  fakeInput.accept = "image/*";
   fakeInput.multiple = true;
-  dropRegion.addEventListener('click', () => {
+  dropRegion.addEventListener("click", () => {
     fakeInput.click();
   });
-  fakeInput.addEventListener('change', () => {
+  fakeInput.addEventListener("change", () => {
     const {
       files
     } = fakeInput;
@@ -385,10 +385,10 @@ function dragDropFull() {
     e.stopPropagation();
   }
 
-  dropRegion.addEventListener('dragenter', preventDefault, false);
-  dropRegion.addEventListener('dragleave', preventDefault, false);
-  dropRegion.addEventListener('dragover', preventDefault, false);
-  dropRegion.addEventListener('drop', preventDefault, false);
+  dropRegion.addEventListener("dragenter", preventDefault, false);
+  dropRegion.addEventListener("dragleave", preventDefault, false);
+  dropRegion.addEventListener("dragover", preventDefault, false);
+  dropRegion.addEventListener("drop", preventDefault, false);
 
   function handleDrop(e) {
     const dt = e.dataTransfer;
@@ -400,7 +400,7 @@ function dragDropFull() {
       handleFiles(files);
     } else {
       // check for img
-      const html = dt.getData('text/html');
+      const html = dt.getData("text/html");
       const match = html && /\bsrc="?([^"\s]+)"?\s*/.exec(html);
       const url = match && match[1];
 
@@ -411,8 +411,8 @@ function dragDropFull() {
 
     function uploadImageFromURL(url) {
       const img = new Image();
-      const c = document.createElement('canvas');
-      const ctx = c.getContext('2d');
+      const c = document.createElement("canvas");
+      const ctx = c.getContext("2d");
 
       img.onload = function () {
         c.width = this.naturalWidth; // update canvas size to match image
@@ -424,20 +424,20 @@ function dragDropFull() {
           // get content as PNG blob
           // call our main function
           handleFiles([blob]);
-        }, 'image/png');
+        }, "image/png");
       };
 
       img.onerror = function () {
-        alert('Error in uploading');
+        alert("Error in uploading");
       };
 
-      img.crossOrigin = ''; // if from different origin
+      img.crossOrigin = ""; // if from different origin
 
       img.src = url;
     }
   }
 
-  dropRegion.addEventListener('drop', handleDrop, false);
+  dropRegion.addEventListener("drop", handleDrop, false);
 
   function handleFiles(files) {
     for (let i = 0, len = files.length; i < len; i++) {
@@ -447,10 +447,10 @@ function dragDropFull() {
 
   function validateImage(image) {
     // check the type
-    const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    const validTypes = ["image/jpeg", "image/png", "image/gif"];
 
     if (validTypes.indexOf(image.type) === -1) {
-      alert('Invalid File Type');
+      alert("Invalid File Type");
       return false;
     } // check the size
 
@@ -458,7 +458,7 @@ function dragDropFull() {
     const maxSizeInBytes = 10e6; // 10MB
 
     if (image.size > maxSizeInBytes) {
-      alert('File too large');
+      alert("File too large");
       return false;
     }
 
@@ -466,13 +466,13 @@ function dragDropFull() {
   } // container
 
 
-  const imgView = document.createElement('div');
-  imgView.className = 'image-view';
+  const imgView = document.createElement("div");
+  imgView.className = "image-view";
   imagePreviewRegion.appendChild(imgView); // previewing image
 
-  const img = document.createElement('img');
-  img.setAttribute('id', 'prevmage');
-  img.className = 'rounded';
+  const img = document.createElement("img");
+  img.setAttribute("id", "prevmage");
+  img.className = "rounded";
   imgView.appendChild(img);
   img.src = imgChara;
 
@@ -501,15 +501,15 @@ exports.editor = editor;
 
 /* eslint-disable import/prefer-default-export */
 async function editor() {
-  const idChara = sessionStorage.getItem('idChara');
-  const prevMage = document.getElementById('prevmage');
-  const text = Array.from(document.querySelectorAll('textarea'));
+  const idChara = sessionStorage.getItem("idChara");
+  const prevMage = document.getElementById("prevmage");
+  const text = Array.from(document.querySelectorAll("textarea"));
   const values = text.map(({
     value
   }) => value.trim());
 
-  if (values.some(value => value === '')) {
-    alert('Please fill in all fields');
+  if (values.some(value => value === "")) {
+    alert("Please fill in all fields");
     return;
   }
 
@@ -517,11 +517,11 @@ async function editor() {
   let image = prevMage.src;
   image = image.substr(22);
   const id = idChara;
-  const description = document.getElementById('editor').innerHTML;
+  const description = document.getElementById("editor").innerHTML;
   const postData = await fetch(`https://character-database.becode.xyz/characters/${id}`, {
-    method: 'PUT',
+    method: "PUT",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     },
     body: JSON.stringify({
       name,
@@ -532,7 +532,7 @@ async function editor() {
   });
   console.log(postData);
   console.log(postData.json());
-  window.location.href = 'index.html';
+  window.location.href = "index.html";
 }
 },{}],"delete.js":[function(require,module,exports) {
 "use strict";
@@ -548,21 +548,21 @@ exports.deleteChara = deleteChara;
 
 /* eslint-disable import/prefer-default-export */
 async function deleteChara() {
-  const idChara = sessionStorage.getItem('idChara');
+  const idChara = sessionStorage.getItem("idChara");
 
-  if (confirm('Are you sure?') === true) {
+  if (confirm("Are you sure?") === true) {
     try {
       const resp = await fetch(`https://character-database.becode.xyz/characters/${idChara}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }
       });
 
       if (!resp.ok) {
-        throw new Error('ID not found');
+        throw new Error("ID not found");
       } else {
-        window.location.href = 'index.html';
+        window.location.href = "index.html";
       }
     } catch (err) {
       alert(err);
@@ -593,32 +593,32 @@ var _delete = require("./delete.js");
 
 /* eslint-disable import/extensions */
 function updateChara() {
-  const nameChara = sessionStorage.getItem('nameChara');
-  const descriptionChara = sessionStorage.getItem('descriptionChara');
-  const shortDesChara = sessionStorage.getItem('shortDesChara');
-  containerB.style.display = 'block';
-  cardSolo.style.display = 'block';
-  document.getElementById('name').innerHTML = nameChara;
-  document.getElementById('shortDescription').innerHTML = shortDesChara;
-  document.getElementById('editor').innerHTML = descriptionChara;
+  const nameChara = sessionStorage.getItem("nameChara");
+  const descriptionChara = sessionStorage.getItem("descriptionChara");
+  const shortDesChara = sessionStorage.getItem("shortDesChara");
+  containerB.style.display = "block";
+  cardSolo.style.display = "block";
+  document.getElementById("name").innerHTML = nameChara;
+  document.getElementById("shortDescription").innerHTML = shortDesChara;
+  document.getElementById("editor").innerHTML = descriptionChara;
   (0, _dragdropfull.dragDropFull)();
-  const buttonSolo = document.createElement('div');
-  buttonSolo.setAttribute('class', 'buttonSolo');
-  buttonSolo.setAttribute('id', 'buttonSolo');
+  const buttonSolo = document.createElement("div");
+  buttonSolo.setAttribute("class", "buttonSolo");
+  buttonSolo.setAttribute("id", "buttonSolo");
   cardSolo.appendChild(buttonSolo);
-  const updateButton = document.createElement('input');
-  updateButton.setAttribute('id', 'updateButton');
-  updateButton.setAttribute('type', 'submit');
-  updateButton.setAttribute('value', 'Save Updated Character');
+  const updateButton = document.createElement("input");
+  updateButton.setAttribute("id", "updateButton");
+  updateButton.setAttribute("type", "submit");
+  updateButton.setAttribute("value", "Save Updated Character");
   buttonSolo.appendChild(updateButton);
-  updateButton.addEventListener('click', async () => {
+  updateButton.addEventListener("click", async () => {
     (0, _put.editor)();
   });
-  const deleteButton = document.createElement('button');
-  deleteButton.setAttribute('id', 'deleteButton');
-  deleteButton.innerText = 'Delete character';
+  const deleteButton = document.createElement("button");
+  deleteButton.setAttribute("id", "deleteButton");
+  deleteButton.innerText = "Delete character";
   buttonSolo.appendChild(deleteButton);
-  deleteButton.addEventListener('click', () => {
+  deleteButton.addEventListener("click", () => {
     (0, _delete.deleteChara)();
   });
   (0, _buttons.backButton)();
@@ -647,52 +647,52 @@ var _delete = require("./delete.js");
 
 /* eslint-disable import/extensions */
 function deleteButton() {
-  const deleteButton = document.createElement('button');
-  deleteButton.setAttribute('id', 'deleteButton');
-  deleteButton.innerText = 'Delete character';
+  const deleteButton = document.createElement("button");
+  deleteButton.setAttribute("id", "deleteButton");
+  deleteButton.innerText = "Delete character";
   buttonSolo.appendChild(deleteButton);
-  deleteButton.addEventListener('click', () => {
-    window.location.href = 'index.html';
+  deleteButton.addEventListener("click", () => {
+    window.location.href = "index.html";
   });
 }
 
 function backButton() {
-  const backButton = document.createElement('button');
-  backButton.setAttribute('id', 'backButton');
-  backButton.innerText = '<Back';
+  const backButton = document.createElement("button");
+  backButton.setAttribute("id", "backButton");
+  backButton.innerText = "<Back";
   cardSolo.appendChild(backButton);
-  backButton.addEventListener('click', () => {
-    window.location.href = 'index.html';
+  backButton.addEventListener("click", () => {
+    window.location.href = "index.html";
   });
 }
 
 function updateButton() {
-  const updateButton = document.createElement('input');
-  updateButton.setAttribute('id', 'updateButton');
-  updateButton.setAttribute('type', 'submit');
-  updateButton.setAttribute('value', 'Save Updated Character');
+  const updateButton = document.createElement("input");
+  updateButton.setAttribute("id", "updateButton");
+  updateButton.setAttribute("type", "submit");
+  updateButton.setAttribute("value", "Save Updated Character");
   buttonSolo.appendChild(updateButton);
-  updateButton.addEventListener('click', async () => {
+  updateButton.addEventListener("click", async () => {
     editor();
   });
 }
 
 function eraseButton() {
-  const deleteButton = document.createElement('button');
-  deleteButton.setAttribute('id', 'deleteButton');
-  deleteButton.innerText = 'Delete character';
+  const deleteButton = document.createElement("button");
+  deleteButton.setAttribute("id", "deleteButton");
+  deleteButton.innerText = "Delete character";
   buttonSolo.appendChild(deleteButton);
-  deleteButton.addEventListener('click', () => {
+  deleteButton.addEventListener("click", () => {
     (0, _delete.deleteChara)();
   });
 }
 
 function updatedButton() {
-  const updateButton = document.createElement('button');
-  updateButton.setAttribute('id', 'updateButton');
-  updateButton.innerText = 'Update character';
+  const updateButton = document.createElement("button");
+  updateButton.setAttribute("id", "updateButton");
+  updateButton.innerText = "Update character";
   buttonSolo.appendChild(updateButton);
-  updateButton.addEventListener('click', () => {
+  updateButton.addEventListener("click", () => {
     cardChara.remove();
     (0, _upchara.updateChara)();
   });
@@ -717,20 +717,20 @@ var _buttons = require("./buttons.js");
 
 /* eslint-disable import/extensions */
 async function newChara() {
-  container.style.display = 'none';
-  containerB.style.display = 'block';
+  container.style.display = "none";
+  containerB.style.display = "block";
   newButton.remove();
   (0, _dragdropempty.dragDropEmpt)();
-  const buttonSolo = document.createElement('div');
-  buttonSolo.setAttribute('class', 'buttonSolo');
-  buttonSolo.setAttribute('id', 'buttonSolo');
+  const buttonSolo = document.createElement("div");
+  buttonSolo.setAttribute("class", "buttonSolo");
+  buttonSolo.setAttribute("id", "buttonSolo");
   cardSolo.appendChild(buttonSolo);
-  const saveButton = document.createElement('input');
-  saveButton.setAttribute('id', 'updateButton');
-  saveButton.setAttribute('type', 'submit');
-  saveButton.setAttribute('value', 'Save New Character');
+  const saveButton = document.createElement("input");
+  saveButton.setAttribute("id", "updateButton");
+  saveButton.setAttribute("type", "submit");
+  saveButton.setAttribute("value", "Save New Character");
   buttonSolo.appendChild(saveButton);
-  saveButton.addEventListener('click', async () => {
+  saveButton.addEventListener("click", async () => {
     (0, _post.add)();
   });
   (0, _buttons.deleteButton)();
@@ -752,45 +752,45 @@ var _buttons = require("./buttons.js");
 
 /* eslint-disable import/extensions */
 function chara() {
-  const nameChara = sessionStorage.getItem('nameChara');
-  const descriptionChara = sessionStorage.getItem('descriptionChara');
-  const shortDesChara = sessionStorage.getItem('shortDesChara');
-  const imgChara = sessionStorage.getItem('imgChara');
-  container.style.display = 'none';
-  containerB.style.display = 'block';
-  cardSolo.style.display = 'none';
+  const nameChara = sessionStorage.getItem("nameChara");
+  const descriptionChara = sessionStorage.getItem("descriptionChara");
+  const shortDesChara = sessionStorage.getItem("shortDesChara");
+  const imgChara = sessionStorage.getItem("imgChara");
+  container.style.display = "none";
+  containerB.style.display = "block";
+  cardSolo.style.display = "none";
   newButton.remove();
-  const cardChara = document.getElementById('cardChara');
-  const image = document.createElement('img');
-  image.setAttribute('class', 'rounded');
-  image.setAttribute('id', 'bigImg');
+  const cardChara = document.getElementById("cardChara");
+  const image = document.createElement("img");
+  image.setAttribute("class", "rounded");
+  image.setAttribute("id", "bigImg");
   image.src = imgChara;
   cardChara.appendChild(image);
-  const titreSolo = document.createElement('div');
-  titreSolo.setAttribute('class', 'titreSolo');
-  const h3 = document.createElement('h3');
+  const titreSolo = document.createElement("div");
+  titreSolo.setAttribute("class", "titreSolo");
+  const h3 = document.createElement("h3");
   h3.textContent = nameChara;
   cardChara.appendChild(titreSolo);
   titreSolo.appendChild(h3);
-  const minp = document.createElement('p');
-  minp.setAttribute('id', 'minP');
+  const minp = document.createElement("p");
+  minp.setAttribute("id", "minP");
   minp.textContent = `${shortDesChara}`;
   titreSolo.appendChild(minp);
-  const p = document.createElement('p');
-  p.setAttribute('id', 'bigP');
+  const p = document.createElement("p");
+  p.setAttribute("id", "bigP");
   p.innerHTML = `${descriptionChara}`;
   cardChara.appendChild(p);
-  const buttonSolo = document.createElement('div');
-  buttonSolo.setAttribute('class', 'buttonSolo');
-  buttonSolo.setAttribute('id', 'buttonSolo');
+  const buttonSolo = document.createElement("div");
+  buttonSolo.setAttribute("class", "buttonSolo");
+  buttonSolo.setAttribute("id", "buttonSolo");
   cardChara.appendChild(buttonSolo);
   (0, _buttons.updatedButton)();
   (0, _buttons.eraseButton)();
-  const indexButton = document.createElement('button');
-  indexButton.setAttribute('id', 'backButton');
-  indexButton.innerText = '<Back';
-  indexButton.addEventListener('click', () => {
-    window.location.href = 'index.html';
+  const indexButton = document.createElement("button");
+  indexButton.setAttribute("id", "backButton");
+  indexButton.innerText = "<Back";
+  indexButton.addEventListener("click", () => {
+    window.location.href = "index.html";
   });
   cardChara.appendChild(indexButton);
 }
@@ -1565,16 +1565,16 @@ require("regenerator-runtime/runtime");
 /* eslint-disable func-names */
 
 /* eslint-disable import/extensions */
-const containerB = document.getElementById('containerB');
-containerB.style.display = 'none';
-const searchbox = document.getElementById('search');
-const container = document.getElementById('container');
-const newButton = document.getElementById('newButton');
-newButton.addEventListener('click', () => {
+const containerB = document.getElementById("containerB");
+containerB.style.display = "none";
+const searchbox = document.getElementById("search");
+const container = document.getElementById("container");
+const newButton = document.getElementById("newButton");
+newButton.addEventListener("click", () => {
   (0, _newchara.newChara)();
 });
 const request = new XMLHttpRequest();
-request.open('GET', 'https://character-database.becode.xyz/characters', true);
+request.open("GET", "https://character-database.becode.xyz/characters", true);
 
 request.onload = function () {
   // Begin accessing JSON data here
@@ -1582,45 +1582,45 @@ request.onload = function () {
 
   if (request.status >= 200 && request.status < 400) {
     data.forEach(character => {
-      const card = document.createElement('div');
-      card.setAttribute('class', 'card');
-      card.setAttribute('id', 'card');
+      const card = document.createElement("div");
+      card.setAttribute("class", "card");
+      card.setAttribute("id", "card");
       container.appendChild(card);
-      const image = document.createElement('img');
-      image.setAttribute('class', 'rounded');
+      const image = document.createElement("img");
+      image.setAttribute("class", "rounded");
       image.src = `data:image/png;base64,${character.image}`;
       card.appendChild(image);
-      const h1 = document.createElement('h2');
-      h1.setAttribute('class', 'cardtitre');
+      const h1 = document.createElement("h2");
+      h1.setAttribute("class", "cardtitre");
       h1.textContent = character.name;
       card.appendChild(h1);
-      const p = document.createElement('p');
+      const p = document.createElement("p");
       p.textContent = `${character.shortDescription.substring(0, 150)}...`;
       card.appendChild(p);
-      searchbox.addEventListener('keyup', () => {
+      searchbox.addEventListener("keyup", () => {
         (0, _searchbar.searchBar)();
       });
-      const charaButton = document.createElement('button');
-      charaButton.setAttribute('id', 'charaButton');
-      charaButton.innerText = 'See character';
+      const charaButton = document.createElement("button");
+      charaButton.setAttribute("id", "charaButton");
+      charaButton.innerText = "See character";
       card.appendChild(charaButton);
-      charaButton.addEventListener('click', () => {
+      charaButton.addEventListener("click", () => {
         const idChara = character.id;
         const nameChara = character.name;
         const descriptionChara = character.description;
         const shortDesChara = character.shortDescription;
         const imgChara = `data:image/png;base64,${character.image}`;
-        sessionStorage.setItem('idChara', idChara);
-        sessionStorage.setItem('nameChara', nameChara);
-        sessionStorage.setItem('descriptionChara', descriptionChara);
-        sessionStorage.setItem('shortDesChara', shortDesChara);
-        sessionStorage.setItem('imgChara', imgChara);
+        sessionStorage.setItem("idChara", idChara);
+        sessionStorage.setItem("nameChara", nameChara);
+        sessionStorage.setItem("descriptionChara", descriptionChara);
+        sessionStorage.setItem("shortDesChara", shortDesChara);
+        sessionStorage.setItem("imgChara", imgChara);
         (0, _chara.chara)();
       });
     });
   } else {
-    const errorMessage = document.createElement('marquee');
-    errorMessage.textContent = 'Gah, it\'s not working!';
+    const errorMessage = document.createElement("marquee");
+    errorMessage.textContent = "Gah, it's not working!";
     container.appendChild(errorMessage);
   }
 };
@@ -1654,7 +1654,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52452" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54051" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
